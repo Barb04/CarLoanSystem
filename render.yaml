@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: carloan-backend
+    runtime: python
+    buildCommand: "./backend/build.sh"
+    startCommand: "cd backend && waitress-serve --port=8000 core.wsgi:application"
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: false
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"
